@@ -26,18 +26,24 @@
       {
         "iconPath": "static/tabbar/home.png",
         "selectedIconPath": "static/tabbar/homeHL.png",
-        "pagePath": "pages/index/index",
-        "text": "%tabbar.home%"
+        "pagePath": "pages/point-home/point-home"
       },
       {
         "iconPath": "static/tabbar/example.png",
         "selectedIconPath": "static/tabbar/exampleHL.png",
-        "pagePath": "pages/about/about",
-        "text": "%tabbar.about%"
+        "pagePath": "pages/my/my"
       }
     ]
   },
   "pages": [
+    {
+      "path": "pages/point-home/point-home",
+      "type": "home",
+      "layout": "default",
+      "style": {
+        "navigationBarTitleText": "首页"
+      }
+    },
     {
       "path": "pages/index/index",
       "type": "home",
@@ -58,6 +64,14 @@
       "type": "page",
       "style": {
         "navigationBarTitleText": "%app.name%"
+      }
+    },
+    {
+      "path": "pages/my/my",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationBarTitleText": "我的"
       }
     }
   ],

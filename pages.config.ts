@@ -29,14 +29,12 @@ export default defineUniPages({
       {
         iconPath: 'static/tabbar/home.png',
         selectedIconPath: 'static/tabbar/homeHL.png',
-        pagePath: 'pages/index/index',
-        text: '%tabbar.home%',
+        pagePath: 'pages/point-home/point-home',
       },
       {
         iconPath: 'static/tabbar/example.png',
         selectedIconPath: 'static/tabbar/exampleHL.png',
-        pagePath: 'pages/about/about',
-        text: '%tabbar.about%',
+        pagePath: 'pages/my/my',
       },
     ],
   },
