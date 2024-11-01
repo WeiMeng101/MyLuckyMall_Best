@@ -11,7 +11,12 @@ export type CustomRequestOptions = UniApp.RequestOptions & {
 } & IUniUploadFileOptions // 添加uni.uploadFile参数类型
 
 // 请求基准地址
-const baseUrl = getEvnBaseUrl()
+// const baseUrl = getEvnBaseUrl()
+// 多地址映射
+const proxyMap = {
+  buyer: 'https://buyer-api.2024shop.shop',
+  common: 'https://common-api.2024shop.shop',
+}
 
 // 拦截器配置
 const httpInterceptor = {
@@ -33,19 +38,25 @@ const httpInterceptor = {
       if (JSON.parse(__VITE_APP_PROXY__)) {
         // 啥都不需要做
       } else {
-        options.url = baseUrl + options.url
+        // options.url = baseUrl + options.url
+        Object.keys(proxyMap).forEach((key) => {
+          if (options.url.startsWith(`/${key}`)) {
+            options.url = proxyMap[key] + options.url
+          }
+        })
       }
       // #endif
       // 非H5正常拼接
       // #ifndef H5
-      options.url = baseUrl + options.url
+      // options.url = baseUrl + options.url
+
       // #endif
-      // TIPS: 如果需要对接多个后端服务，也可以在这里处理，拼接成所需要的地址
     }
     // 1. 请求超时
     options.timeout = 10000 // 10s
     // 2. （可选）添加小程序端请求头标识
     options.header = {
+      'accept-language': 'en', //  请求后端语言
       platform, // 可选，与 uniapp 定义的平台一致，告诉后台来源
       ...options.header,
     }

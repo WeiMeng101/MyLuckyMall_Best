@@ -67,6 +67,14 @@
       }
     },
     {
+      "path": "pages/login/login",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationBarTitleText": "登录"
+      }
+    },
+    {
       "path": "pages/my/my",
       "type": "page",
       "layout": "default",
