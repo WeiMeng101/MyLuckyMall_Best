@@ -36,7 +36,8 @@
 </template>
 
 <script lang="ts" setup>
-import { getFooAPI, postFooAPI, IFooItem } from '@/service/index/foo'
+// import { getFooAPI, postFooAPI, IFooItem } from '@/service/index/foo'
+import { getFooAPI, postFooAPI } from '@/service/point-shop'
 
 const recommendUrl = ref('http://laf.run/signup?code=ohaOgIX')
 
@@ -46,10 +47,23 @@ const recommendUrl = ref('http://laf.run/signup?code=ohaOgIX')
 // }
 const initialData = undefined
 // 适合少部分全局性的接口————多个页面都需要的请求接口，额外编写一个 Service 层
-const { loading, error, data, run } = useRequest<IFooItem>(() => getFooAPI('菲鸽'), {
-  immediate: true,
-  initialData,
-})
+// const { loading, error, data, run } = useRequest(() => getFooAPI(), {
+//   immediate: true,
+//   initialData,
+// })
+const { loading, error, data, run } = useRequest(
+  () =>
+    postFooAPI({
+      isAsc: 18,
+      orderType: 3,
+      pageSize: 1,
+      pageNum: 1,
+    }),
+  {
+    immediate: true,
+    initialData,
+  },
+)
 const reset = () => {
   data.value = initialData
 }
